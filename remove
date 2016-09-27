@@ -3,6 +3,6 @@
 # -------------------------------------------------------
 # Delete line with alias from bashrc
 while read -r ~/.bashrc; do
-  [[ ! $s =~ alias 'ctftoolkit'=/usr/share/ctftoolkit/./main/ ]] && echo "$line"
+  [[ ! $s =~ alias \'ctftoolkit\'=/usr/share/ctftoolkit/./main/ ]] && echo "$line"
 done <~/.bashrc > o 
 mv o ~/.bashrc
