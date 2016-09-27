@@ -7,3 +7,5 @@ awk '!/ctftoolkit/' ~/.bashrc > temp && mv temp ~/.bashrc
 # Delete directory and all files
 cd ~
 rm -rf /usr/share/ctftoolkit
+
+echo "Thank you for using CTFToolkit :)"
