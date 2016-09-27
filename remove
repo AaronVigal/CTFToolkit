@@ -2,7 +2,4 @@
 # Script made by Aaron Vigal. http://www.aaronvigal.com
 # -------------------------------------------------------
 # Delete line with alias from bashrc
-while read -r ~/.bashrc; do
-  [[ ! $s =~ alias \'ctftoolkit\'=/usr/share/ctftoolkit/./main/ ]] && echo "$line"
-done <~/.bashrc > o 
-mv o ~/.bashrc
+awk '!/ctftoolkit/' ~/.bashrc > temp && mv temp ~/.bashrc
