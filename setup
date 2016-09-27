@@ -1,0 +1,14 @@
+#!/bin/bash
+# Script made by Aaron Vigal. http://www.aaronvigal.com
+# -------------------------------------------------------
+# Check if directory exists, if not, make one.
+[ -d "/usr/share/ctftoolkit" ] || mkdir /usr/share/ctftoolkit
+
+# Check for alias in bashrc file if not one then add one
+if grep -Fxq "alias 'ctftoolkit'=/usr/share/ctftoolkit/./main" ~/.bashrc
+then
+    echo "Directory already satisfies needs."
+else
+    echo "alias 'csctk'=/usr/share/ctftoolkit/./main" >> ~/.bashrc
+fi
+
