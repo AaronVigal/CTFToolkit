@@ -13,13 +13,14 @@ else
 fi
 
 # Clone everything in the repo into /usr/share/ctftoolkit
-git clone https://github.com/Aaronvigal/CTFToolkit.git /usr/share/ctftoolkit
+echo "Cloning 'CTFToolkit' into /usr/share/ctftoolkit..."
+git clone https://github.com/Aaronvigal/CTFToolkit.git /usr/share/ctftoolkit>/dev/null 
 
 # Remove LICENSE and README from Github
-rm /usr/share/ctftoolkit/README.md /usr/share/ctftoolkit/LICENSE
+rm /usr/share/ctftoolkit/README.md /usr/share/ctftoolkit/LICENSE>/dev/null 
 
 # Make file executable
-chmod +x /usr/share/ctftoolkit/remove
+chmod +x /usr/share/ctftoolkit/remove>/dev/null 
 
 # Remove setup and all the .git files
-rm /usr/share/ctftoolkit/setup
+rm /usr/share/ctftoolkit/setup>/dev/null 
