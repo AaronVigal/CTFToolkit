@@ -11,9 +11,9 @@ A Kali-Linux Toolkit made by Aaron Vigal for the Millard West Computer Science C
 This framework should run under most versions of Linux but is optimized for working on Kali.
 The setup is very straight-forward just copy and paste the following code into a terminal:
 ```{r, engine='bash', count_lines}
-wget https://raw.githubusercontent.com/AaronVigal/ctftoolkit/master/setup
-sudo chmod +x setup
-sudo ./setup 
+wget https://raw.githubusercontent.com/AaronVigal/CTFToolkit/master/setup
+chmod +x setup
+./setup 
 ```
 The setup file checks/installs the following dependencies:
 
