@@ -3,3 +3,6 @@
 # -------------------------------------------------------
 # Delete line with alias from bashrc
 awk '!/ctftoolkit/' ~/.bashrc > temp && mv temp ~/.bashrc
+
+# Delete directory and all files
+rm -rf /usr/share/ctftoolkit
