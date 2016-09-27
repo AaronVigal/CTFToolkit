@@ -21,6 +21,7 @@ rm /usr/share/ctftoolkit/README.md /usr/share/ctftoolkit/LICENSE>/dev/null
 
 # Make file executable
 chmod +x /usr/share/ctftoolkit/remove>/dev/null 
+chmod +x /usr/share/ctftoolkit/update>/dev/null 
 
 # Remove setup and all the .git files
 rm /usr/share/ctftoolkit/setup>/dev/null 
