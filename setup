@@ -2,15 +2,15 @@
 # Script made by Aaron Vigal. http://www.aaronvigal.com
 # -------------------------------------------------------
 # Check if directory exists, if not, make one.
-[ -d "/usr/share/CTFToolkit" ] || mkdir /usr/share/CTFToolkit
+[ -d "/usr/share/ctftoolkit" ] || mkdir /usr/share/ctftoolkit
 
 # Check for alias in bashrc file if not one then add one
-if grep -Fxq "alias 'CTFToolkit'=/usr/share/CTFToolkit/./main" ~/.bashrc
+if grep -Fxq "alias 'ctftoolkit'=/usr/share/ctftoolkit/./main" ~/.bashrc
 then
     echo "Directory already satisfies needs."
 else
-    echo "alias 'CTFToolkit'=/usr/share/CTFToolkit/./main" >> ~/.bashrc
+    echo "alias 'ctftoolkit'=/usr/share/ctftoolkit/./main" >> ~/.bashrc
 fi
 
 # Remove LICENSE and README from Github
-rm /usr/share/CTFToolkit/README.md /usr/share/CTFToolkit/LICENSE
+rm /usr/share/ctftoolkit/README.md /usr/share/ctftoolkit/LICENSE
