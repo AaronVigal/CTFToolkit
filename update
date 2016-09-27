@@ -10,14 +10,16 @@ mkdir /usr/share/ctftoolkit
 
 # Clone everything in the repo into /usr/share/ctftoolkit
 echo "Cloning 'CTFToolkit' into /usr/share/ctftoolkit..."
-git clone https://github.com/Aaronvigal/CTFToolkit.git /usr/share/ctftoolkit>/dev/null 
+git clone https://github.com/Aaronvigal/CTFToolkit.git /usr/share/ctftoolkit>/dev/null 2>&1
 
 # Remove LICENSE and README from Github
-rm /usr/share/ctftoolkit/README.md /usr/share/ctftoolkit/LICENSE>/dev/null 
+rm /usr/share/ctftoolkit/README.md /usr/share/ctftoolkit/LICENSE>/dev/null 2>&1
 
 # Make file executable
-chmod +x /usr/share/ctftoolkit/remove>/dev/null 
-chmod +x /usr/share/ctftoolkit/update>/dev/null 
+chmod +x /usr/share/ctftoolkit/remove>/dev/null 2>&1
+chmod +x /usr/share/ctftoolkit/update>/dev/null 2>&1
 
 # Remove setup and all the .git files
-rm /usr/share/ctftoolkit/setup>/dev/null 
+rm /usr/share/ctftoolkit/setup>/dev/null 2>&1
+
+echo "CTFToolkit is now updated :)"
