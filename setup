@@ -13,7 +13,7 @@ else
 fi
 
 # Clone everything in the repo into /usr/share/CTFToolkit
-git clone https://github.com/Aaronvigal/CTFToolkit.git /usr/share/CTFToolkit
+git clone https://github.com/Aaronvigal/CTFToolkit.git /usr/share/ctftoolkit
 
 # Remove LICENSE and README from Github
 rm /usr/share/ctftoolkit/README.md /usr/share/ctftoolkit/LICENSE
