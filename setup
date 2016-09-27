@@ -7,12 +7,12 @@
 # Check for alias in bashrc file if not one then add one
 if grep -Fxq "alias 'ctftoolkit'=/usr/share/ctftoolkit/./main" ~/.bashrc
 then
-    echo "Directory already satisfies needs."
+    echo "Alias already satisfied."
 else
     echo "alias 'ctftoolkit'=/usr/share/ctftoolkit/./main" >> ~/.bashrc
 fi
 
-# Clone everything in the repo into /usr/share/CTFToolkit
+# Clone everything in the repo into /usr/share/ctftoolkit
 git clone https://github.com/Aaronvigal/CTFToolkit.git /usr/share/ctftoolkit
 
 # Remove LICENSE and README from Github
