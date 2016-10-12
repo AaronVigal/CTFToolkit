@@ -1,12 +1,10 @@
 # CTFToolkit (Computer Science Club Toolkit)
 A Kali-Linux Toolkit made by Aaron Vigal for the Millard West Computer Science Club that includes the following projects:
 
-1. [Metasploit](#metasploit)
-2. [DNS Spoofing](#dns-spoofing) (Functional but in beta)
-3. [Slowloris](#slowloris)
-4. [Cracking WiFi networks](#cracking-wifi)
-5. [Zengineer](#social-engineering-toolkit) (Formerly known "DATA")
-6. [CSCipher](#cscipher) (In-Development)
+1. [CSCipher](#cscipher)
+2. [Flag Crawler](#flag-crawler)
+3. [Steggo Sniffer](#steggo-sniffer)
+3. [Brute Force Web](#brute-force-web)
 
 This framework should run under most versions of Linux but is optimized for working on Kali.
 The setup is very straight-forward just copy and paste the following code into a terminal:
@@ -17,7 +15,7 @@ chmod +x setup
 ```
 The setup file checks/installs the following dependencies:
 
-1. Metasploit Framework
+1. Java
 2. aircrack-ng
 3. Python 3.5
 4. Python 2.7
@@ -35,45 +33,35 @@ For a detailed description on how each module works check the sections below.
 ## General Layout:
 Each individual menu contains multiple sub menus or options for customizable on each individual module. The structure of this toolkit looks like this:
 ```
-CSCTK
+CTFToolkit
 │   README.MD
 │   LICENSE  
 │
-└───Metasploit
-│   │   Create an APK
-│   │   Use Existing APK
-|   |   Exploit APK
-│   └───
-│   
-└───DNS Spoofing
-│   │   Use HTTP
-│   │   Use HTTPS
-│   └───
-|
-└───Wireless Attack
-│   │   Use rockyou.txt
-│   │   Use dnsmap.txt
-|   |   Use custom wordlist
-│   └───
-│   
-└───Slowloris
-│   │   Use HTTP
-│   │   Use HTTPS
-│   └───
-|
-└───Social Engineering
-│   │   Verbose Mode
-│   │   Add Images To HTML Output
-|   |   Check Against Every TLD
-│   │   Open Links
-│   │   Search Multiple Usernames
-|   |   Search Douglas County Assessor
-│   └───
-│   
 └───CSCipher
-│   │   Enter ciphertext
-│   │   Pull from text file
+│   │   Load from file
+│   │   Load from web page
+|   |   Enter in text
 │   └───
+│   
+└───Flag Crawler
+│   │   Wget Entire Site
+│   │   Robots.txt
+|   |   User Agent Spoofer
+|   |   All
+│   └───
+|
+└───Steggo Sniffer
+│   │   Simple Steggo
+│   │   Least Sig Bit
+|   |   All
+│   └───
+│   
+└───Brute Force Web
+│   │   Custom Post Requests
+│   │   Use Rockyou.txt
+|   |   Use Custom Wordlist
+│   └───
+│   
 └───
 
 ```
