@@ -4,7 +4,7 @@ import argparse, os, sys
 
 # ---------- Add Arguments ---------- #
 parser = argparse.ArgumentParser()
-parser.add_argument("-c", "--cipher_text", help="Given ciphertext 'c'", metavar='')
+parser.add_argument("cipher_text")
 parser.add_argument("-k", "--key", help="Known Key for decryption", metavar='')
 args = parser.parse_args()
 # ---------- End Add Arguments ---------- #
