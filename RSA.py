@@ -180,13 +180,19 @@ while None in (c, n, p, q, d, e, phi):
     if c is not None and d is not None and n is not None:
         # Rare case when we have everything needed to decrypt right away so skip all else
         m = pow(c,d,n)
-        print("Flag: " + str(hex(m)[2:-1].decode('hex')))
+        if sys.version_info >= (3, 0):
+            print("Flag: " + str((bytes.fromhex(hex(m)[2:]).decode('utf-8'))))
+        else:
+            print("Flag: " + str(hex(c)[2:-1].decode('hex')))
         print("-" * int(columns))
         exit()
 
     if e is 1:
         # Rare case when we have everything needed to decrypt right away so skip all else
-        print("Flag: " + str(hex(c)[2:-1].decode('hex')))
+        if sys.version_info >= (3, 0):
+            print("Flag: " + str((bytes.fromhex(hex(m)[2:]).decode('utf-8'))))
+        else:
+            print("Flag: " + str(hex(c)[2:-1].decode('hex')))
         print("-" * int(columns))
         exit()
 
@@ -248,6 +254,9 @@ if int(((e * d) % phi)) != 1:
     print("e, d, and φ cannot be confirmed. Exit.")
     print("Error: " + str(int(((e * d) % phi))) + " != 1")
     exit()
-print("Flag: " + str((bytes.fromhex(hex(m)[2:]).decode('utf-8'))))
+if sys.version_info >= (3, 0):
+    print("Flag: " + str((bytes.fromhex(hex(m)[2:]).decode('utf-8'))))
+else:
+    print("Flag: " + str(hex(c)[2:-1].decode('hex')))
 print("-" * int(columns))
 # -------- End Confirm Information -------- #
