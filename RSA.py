@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import argparse, os, requests, re, datetime, binascii, random
 from fractions import gcd
-from Crypto.PublicKey import RSA
+# from Crypto.PublicKey import RSA
 
 # ---------- Add Arguments ---------- #
 parser = argparse.ArgumentParser()
@@ -27,50 +27,50 @@ if args.cipher_text is not None:
     if not args.hex:
         c = int(args.cipher_text)
     else:
-        c = int(args.cipher_text, 0)
+        c = int(args.cipher_text.replace("L",""), 16)
     given_info += "c: " + str(c) + "\n"
 if args.modulus_n is not None:
     if not args.hex:
         n = int(args.modulus_n)
     else:
-        n = int(args.modulus_n, 0)
+        n = int(args.modulus_n.replace("L",""), 16)
     given_info += "n: " + str(n) + "\n"
 if args.prime_p is not None:
     if not args.hex:
         p = int(args.prime_p)
     else:
-        p = int(args.prime_p, 0)
+        p = int(args.prime_p.replace("L",""), 16)
     given_info += "p: " + str(p) + "\n"
 if args.prime_q is not None:
     if not args.hex:
         q = int(args.prime_q)
     else:
-        q = int(args.prime_q, 0)
+        q = int(args.prime_q.replace("L",""), 16)
     given_info += "q: " + str(q) + "\n"
 if args.private_key is not None:
     if not args.hex:
         d = int(args.private_key)
     else:
-        d = int(args.private_key, 0)
+        d = int(args.private_key.replace("L",""), 16)
     given_info += "d: " + str(d) + "\n"
 if args.public_key is not None:
     if not args.hex:
         e = int(args.public_key)
     else:
-        e = int(args.public_key, 0)
+        e = int(args.public_key.replace("L",""), 16)
     given_info += "e: " + str(e) + "\n"
 if args.modular_inverse is not None:
     if not args.hex:
         phi = args.modular_inverse
     else:
-        phi = int(args.modular_inverse, 0)
+        phi = int(args.modular_inverse.replace("L",""), 16)
     given_info += "φ: " + str(phi) + "\n"
 
 # Get screen size for printing line
 rows, columns = os.popen('stty size', 'r').read().split()
-print "-" * int(columns)
-print "GIVEN\n\n" + given_info[:-1]
-print "-" * int(columns) + "\nGENERATED\n"
+print("-" * int(columns))
+print("GIVEN\n\n" + given_info[:-1])
+print("-" * int(columns) + "\nGENERATED\n")
 # ---------- End Parse Arguments ---------- #
 
 # ---------- Define Functions ---------- #
@@ -82,7 +82,7 @@ def find_d(e, phi):
     temp_phi = phi
 
     while e > 0:
-        temp1 = temp_phi/e
+        temp1 = temp_phi//e
         temp2 = temp_phi - temp1 * e
         temp_phi = e
         e = temp2
@@ -140,7 +140,7 @@ def fermatAttack(N,limit=100000):
             if(b**2 == a*a-N):
                 p = a+b
                 q = a-b
-                print "p: " + str(p) + "\nq: " + str(q)
+                print("p: " + str(p) + "\nq: " + str(q))
                 return
         a = a+1
         b2 = a*a-N
@@ -180,14 +180,20 @@ while None in (c, n, p, q, d, e, phi):
     if c is not None and d is not None and n is not None:
         # Rare case when we have everything needed to decrypt right away so skip all else
         m = pow(c,d,n)
-        print "Flag: " + str(hex(m)[2:-1].decode('hex'))
-        print "-" * int(columns)
+        print("Flag: " + str(hex(m)[2:-1].decode('hex')))
+        print("-" * int(columns))
+        exit()
+
+    if e is 1:
+        # Rare case when we have everything needed to decrypt right away so skip all else
+        print("Flag: " + str(hex(c)[2:-1].decode('hex')))
+        print("-" * int(columns))
         exit()
 
     if p is not None and q is not None and n is None:
         # We have p and q we are solving for n
         n = (p * q)
-        print "n: " + str(n)
+        print("n: " + str(n))
 
     if p is None and q is None and n is not None:
         # We have n and we are solving for its prime factors p and q
@@ -198,50 +204,50 @@ while None in (c, n, p, q, d, e, phi):
             q = data[1]
             str(q).strip(")").strip("L")
             if str(p * q) == str(n):
-                print "p: " + str(p) + "\nq: " + str(q)
+                print("p: " + str(p) + "\nq: " + str(q))
             else:
-                print "Invalid factors on FactorDB... Starting manual factoring..."
+                print("Invalid factors on FactorDB... Starting manual factoring...")
                 fermatAttack(n)
-                print "Starting Brute-Force Method..."
+                print("Starting Brute-Force Method...")
                 brent(n)
         else:
-            print "Not in FactorDB... Starting manual factoring..."
+            print("Not in FactorDB... Starting manual factoring...")
             fermatAttack(n)
-            print "Starting Brute-Force Method..."
+            print("Starting Brute-Force Method...")
             brent(n)
 
 
     if p is None and q is not None and n is not None:
         # We have q and n and we are solving for p
         p = (n / q)
-        print "p: " + str(p)
+        print("p: " + str(p))
 
     if q is None and p is not None and n is not None:
         # We have p and n and we are solving for q
         q = (n / p)
-        print "q: " + str(q)
+        print("q: " + str(q))
 
     if phi is None and p is not None and q is not None:
         # We have p and q and we are solving for phi
         phi = ((p - 1) * (q - 1))
-        print "φ: " + str(phi)
+        print("φ: " + str(phi))
 
     if d is None and phi is not None and e is not None:
         # We have phi and e we are solving for d
         d = find_d(e, phi)
-        print "d: " + str(d)
+        print("d: " + str(d))
 # -------- End Solve For Missing Information -------- #
 
 # ---------- Decrypt ---------- #
-print "-" * int(columns)
+print("-" * int(columns))
 m = pow(int(str(c),10),int(str(d),10),int(str(n),10))
 # -------- End Decrypt -------- #
 
 # ---------- Confirm Information ---------- #
-if int(((e * d) % phi)) is not 1:
-    print "e, d, and φ cannot be confirmed. Exit."
-    print "Error: " + str(int(((e * d) % phi))) + " != 1"
+if int(((e * d) % phi)) != 1:
+    print("e, d, and φ cannot be confirmed. Exit.")
+    print("Error: " + str(int(((e * d) % phi))) + " != 1")
     exit()
-print "Flag: " + str(hex(m)[2:-1].decode('hex'))
-print "-" * int(columns)
+print("Flag: " + str((bytes.fromhex(hex(m)[2:]).decode('utf-8'))))
+print("-" * int(columns))
 # -------- End Confirm Information -------- #
