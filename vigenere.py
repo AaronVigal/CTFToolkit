@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import argparse, os, sys
+from operator import itemgetter
 
 # ---------- Add Arguments ---------- #
 parser = argparse.ArgumentParser()
@@ -8,8 +9,6 @@ parser.add_argument("cipher_text")
 parser.add_argument("-k", "--key", help="Known Key for decryption", metavar='')
 args = parser.parse_args()
 # ---------- End Add Arguments ---------- #
-
-from operator import itemgetter
 
 def vigenere():
     def vigenere_decrypt(input):
@@ -86,6 +85,12 @@ def vigenere():
 
     (key, decoded) = vigenere_decrypt(args.cipher_text)
     print("Key: " + key)
+
+    # ---------- Parse Final Text ---------- #
+    for i in range(len(args.cipher_text)):
+        if not (args.cipher_text[i]).isalnum():
+            decoded = decoded[:i] + args.cipher_text[i] + decoded[i:]
     print("Text: " + decoded)
+    # ---------- Parse Final Text ---------- #
 
 vigenere()
