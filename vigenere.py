@@ -6,7 +6,6 @@ from operator import itemgetter
 # ---------- Add Arguments ---------- #
 parser = argparse.ArgumentParser()
 parser.add_argument("cipher_text")
-parser.add_argument("-k", "--key", help="Known Key for decryption", metavar='')
 args = parser.parse_args()
 # ---------- End Add Arguments ---------- #
 
@@ -14,10 +13,10 @@ args = parser.parse_args()
 def vigenere_decrypt(input):
 
     target_freqs = [
-            0.08167, 0.01492, 0.02782, 0.04253, 0.12702, 0.02228, 0.02015,
-            0.06094, 0.06966, 0.00153, 0.00772, 0.04025, 0.02406, 0.06749,
-            0.07507, 0.01929, 0.00095, 0.05987, 0.06327, 0.09056, 0.02758,
-            0.00978, 0.02360, 0.00150, 0.01974, 0.00074]
+        0.08167, 0.01492, 0.02782, 0.04253, 0.12702, 0.02228, 0.02015,
+        0.06094, 0.06966, 0.00153, 0.00772, 0.04025, 0.02406, 0.06749,
+        0.07507, 0.01929, 0.00095, 0.05987, 0.06327, 0.09056, 0.02758,
+        0.00978, 0.02360, 0.00150, 0.01974, 0.00074 ]
 
     sorted_targets = sorted(target_freqs)
 
